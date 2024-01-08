@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block main %}
+<h1>{{message}} "{{name}}"!</h1>
+<div>
+    <img src={{photo}} alt="picture of item">
+</div>
+<div>
+    <h2><a href="/{{link}}">{{button}}</a></h2>
+</div>
+{% endblock %}

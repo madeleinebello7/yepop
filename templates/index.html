@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Results
+{% endblock %}
+
+{% block main %}
+<div class="container-md">
+    <!-- If no such items -->
+    {% if number_items == 0 %}
+    <h1>There are currently no items up for sale</h1>
+    <h2><a href="/sell">Upload items here!</a></h2>
+    <!-- Display items -->
+    {% else %}
+    <h1>Click on an item to claim it!</h1>
+    {% for row in items %}
+    <div class="row">
+        {% for item in row %}
+        <div class="col-sm">
+            <div class="image"><img src={{item.photo}}></div>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary background-color" data-bs-toggle="modal"
+                data-bs-target="#modal_{{item.item_id}}">
+                Claim
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal_{{item.item_id}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <form class="modal-content" action="/claim" method="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Claim {{item.name}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to claim this item?</p>
+                            <input name="item" value="{{item.item_id}}" type="hidden">
+                            <input name="name" value="{{item.name}}" type="hidden">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary background-color">Claim</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

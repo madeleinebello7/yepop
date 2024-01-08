@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block main %}
+<!-- If no messages -->
+{% if number_messages == 0 %}
+<h1>You don't have any messages.</h1>
+<!-- Write a message -->
+<div>
+    <!-- Button trigger modal -->
+    <button type="button" class="button_icon" data-bs-toggle="modal" data-bs-target="#message_someone">
+        <img class="write_icon" src="/static/write.png" border="0">
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="message_someone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form class="modal-content" action="/message" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Write someone a message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Who would you like to contact?</p>
+                    <div>
+                        <input class="form-control select" type="text" id="username" name="username"
+                            placeholder="Username">
+                    </div>
+                    <div>
+                        <p>{{username_error}}</p>
+                    </div>
+                    <div>
+                        <input class="form-control select" type="text" id="message" name="message"
+                            placeholder="Message">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary background-color">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!-- Display items -->
+{% else %}
+<table class="table">
+    <tr>
+        <th>Messages</th>
+        <th>From</th>
+        <th>
+
+            <!-- Button trigger modal write message -->
+            <button type="button" class="button_icon" data-bs-toggle="modal" data-bs-target="#message_someone">
+                <img class="write_icon" src="/static/write.png" border="0">
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="message_someone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <form class="modal-content" action="/message" method="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Write someone a message</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Who would you like to contact?</p>
+                            <div>
+                                <input class="form-control select" type="text" id="username" name="username"
+                                    placeholder="Username">
+                            </div>
+                            <div>
+                                <p>{{username_error}}</p>
+                            </div>
+                            <div>
+                                <input class="form-control select" type="text" id="message" name="message"
+                                    placeholder="Message">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary background-color">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </th>
+    </tr>
+    {% for message in messages %}
+    <tr>
+        <td>{{message.content}}</td>
+        <td>{{message.sender_username}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

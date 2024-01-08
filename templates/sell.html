@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Sell
+{% endblock %}
+
+{% block main %}
+<form action="/sell" method="post">
+    <!-- Characteristics of sold item -->
+    <div class="select">
+        <input class="form-control" type="text" id="name" name="name" placeholder="Name of item" required>
+    </div>
+    <div class="select">
+        <input class="form-control" type="text" id="image" name="image" placeholder="Link to picture of item" required>
+    </div>
+    <div class="select">
+        <select class="form-select" name="category" id="category">
+            <option value="category" disabled="disabled" selected="true">Category</option>
+            <option value="sweater">Sweater</option>
+            <option value="dress">Dress</option>
+            <option value="top">Top</option>
+            <option value="bottom">Pants, skirts, shorts</option>
+            <option value="coat">Jackets and coats</option>
+            <option value="other_category">other</option>
+        </select>
+    </div>
+    <div class="select">
+        <select class="form-select" name="condition" id="Condition">
+            <option value="condition" disabled="disabled" selected="true">Condition</option>
+            <option value="new">New</option>
+            <option value="very_good">Very good</option>
+            <option value="good">Good</option>
+            <option value="ok">Ok</option>
+        </select>
+    </div>
+    <div class="select">
+        <select class="form-select" name="size" id="size">
+            <option value="size" disabled="disabled" selected="true">Size</option>
+            <option value="xs">XS</option>
+            <option value="s">S</option>
+            <option value="m">M</option>
+            <option value="l">L</option>
+            <option value="xl">XL</option>
+        </select>
+    </div>
+    <div class="select">
+        <select class="form-select" name="color" id="color">
+            <option value="color" disabled="disabled" selected="true">Color</option>
+            <option value="black">Black</option>
+            <option value="white">White</option>
+            <option value="grey">Grey</option>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+            <option value="pink">Pink</option>
+        </select>
+    </div>
+    <div class="select">
+        <button class="btn btn-primary background-color" type="submit">Upload</button>
+    </div>
+</form>
+{% endblock %}

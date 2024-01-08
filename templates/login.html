@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block main %}
+<form action="/login" method="post">
+    <div class="select">
+        <input id="username" name="username" placeholder="Username" type="text" class="form-control" required>
+    </div >
+    <div type="text">
+        <p>{{username_error}}</p>
+    </div>
+    <div class="mb-3 select">
+        <input id="password" name="password" placeholder="Password" type="password" class="form-control" required>
+    </div>
+    <div type="text">
+        <p>{{password_error}}</p>
+    </div>
+    <button type="submit" class="btn btn-primary select background-color">Log In</button>
+</form>
+{% endblock %}
