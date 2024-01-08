@@ -9,10 +9,10 @@ Results
     <!-- If no such items -->
     {% if number_items == 0 %}
     <h1>There are currently no items up for sale</h1>
-    <h2><a href="/sell">Upload items here!</a></h2>
+    <h2><a href="/sell">Upload items</a></h2>
     <!-- Display items -->
     {% else %}
-    <h1>Click on an item to claim it!!!</h1>
+    <h1>Click on an item to claim it</h1>
     {% for row in items %}
     <div class="row">
         {% for item in row %}
